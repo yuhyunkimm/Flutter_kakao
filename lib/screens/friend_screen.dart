@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_kakao/components/profile_card.dart';
+import 'package:flutter_kakao/models/user.dart';
 
 class FriendScreen extends StatelessWidget {
   const FriendScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("FriendScreen"),);
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("친구"),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 10),
+          ProfileCard(user: me),
+          // 구분선 hr
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                Text("친구"),
+                SizedBox(width: 6),
+                Text("${friends.length}"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
