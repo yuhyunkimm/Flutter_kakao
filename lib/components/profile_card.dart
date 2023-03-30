@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao/models/user.dart';
+import 'package:flutter_kakao/screens/profile_screen.dart';
 
 class ProfileCard extends StatelessWidget {
   // user가 다르게 들어오는 것 = new
@@ -18,13 +18,24 @@ class ProfileCard extends StatelessWidget {
     return ListTile(
       // Inkwell 은 기본 이벤트
       // GestureDetector 많은 이벤트를 준다
-      leading: InkWell(
-        child: CircleAvatar(
-          radius: 20,
-          // chashedimage 사용
-          backgroundImage: NetworkImage(
-            // url 주소
-            user.backgroundImage,
+      leading: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(user: user),
+              ),
+            );
+          },
+          child: CircleAvatar(
+            radius: 20,
+            // chashedimage 사용
+            backgroundImage: NetworkImage(
+              // url 주소
+              user.backgroundImage,
+            ),
           ),
         ),
       ),
@@ -37,9 +48,7 @@ class ProfileCard extends StatelessWidget {
       ),
       subtitle: Text(
         user.intro,
-        style: TextStyle(
-          fontSize: 12
-        ),
+        style: TextStyle(fontSize: 12),
       ),
     );
   }
