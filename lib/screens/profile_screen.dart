@@ -22,6 +22,12 @@ class ProfileScreen extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Spacer(),
+            if(user.name == me.name) _buildMyIcons() else _buildFriendIcons(),
+          ],
+        ),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: IconButton(
