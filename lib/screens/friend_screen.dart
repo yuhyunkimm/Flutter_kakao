@@ -28,6 +28,14 @@ class FriendScreen extends StatelessWidget {
               ],
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              // 남은 공간의 크기를 계산해서 만들어준다 다시 new하지 않고
+              // 지나간 애들을 다시 그림을 바꿔서 가져와준다
+              itemCount: friends.length,
+              itemBuilder: (context, index) => ProfileCard(user: friends[index]),
+            ),
+          ),
         ],
       ),
     );
