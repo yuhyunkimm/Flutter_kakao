@@ -1,5 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_kakao/screens/chat_screen.dart';
+import 'package:flutter_kakao/screens/friend_screen.dart';
+import 'package:flutter_kakao/screens/more_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainScreen extends StatefulWidget {
@@ -27,9 +29,9 @@ class _MainScreenState extends State<MainScreen> {
         // 화면 바꿀 때
         index: _seletedIndex,
         children: [
-          Center(child: Text("IndexedStack 1"),),
-          Center(child: Text("IndexedStack 2"),),
-          Center(child: Text("IndexedStack 3"),),
+          FriendScreen(),
+          ChatScreen(),
+          MoreScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -43,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         // black54 static으로 접근
         unselectedItemColor: Colors.black54,
         // index 의존성 주입
-        onTap: (index){
+        onTap: (index) {
           // 추후 setState를 의미있는 메서드로 만들어서 사용
           setState(() {
             _seletedIndex = index;
@@ -55,9 +57,11 @@ class _MainScreenState extends State<MainScreen> {
           // FontAwesomeIcons 모든 아이콘 라이브러리 , label이 빠지면 오류가 난다
           // labal에 글을넣으면 아래에 들어간다
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.user), label: ""),
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.comment), label: ""),
-          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.ellipsisH), label: ""),
-        ],// bottomNavigationBar 필수 속성
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.comment), label: ""),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.ellipsisH), label: ""),
+        ], // bottomNavigationBar 필수 속성
       ),
     );
   }
