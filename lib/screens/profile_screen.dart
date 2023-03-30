@@ -9,9 +9,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("ProfileScreeen"),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(user.backgroundImage),
+          fit: BoxFit.fitHeight,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
       ),
     );
   }
